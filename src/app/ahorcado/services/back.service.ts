@@ -15,8 +15,6 @@ export interface Response {
 })
 export class BackService {
 
-  url = 'http://localhost:4200/';
-
   headers = new HttpHeaders();
   options = {};
 
@@ -33,13 +31,13 @@ export class BackService {
 
 
   iniciar(nombre: string): Observable<Response> {
-    const url = `${this.url}iniciar`;
+    const url = `/iniciar`;
     const data = { nombre };
     return this.http.post<Response>(url, data, this.options);
   }
 
   enviarLetra(letra: string): Observable<Response> {
-    const url = `${this.url}enviar-letra`;
+    const url = `/enviar-letra`;
     const data = { letra };
     return this.http.post<Response>(url, data, this.options);
   }
