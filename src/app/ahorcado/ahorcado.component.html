@@ -1,1 +1,23 @@
-<h1>Ahorcado</h1>
+<div style="text-align: center;">
+    <h1>Ahorcado</h1>
+
+    <div *ngIf="!juego">
+        <input type="text" [(ngModel)]="nombre"/>
+        <button (click)="iniciarPartida()">Iniciar partida</button>
+    </div>
+
+    <div *ngIf="juego">
+        <h3>{{juego.palabra}}</h3>
+
+        <div>
+            <div *ngFor="let row of letras">
+                <button *ngFor="let letra of row" (click)="enviarLetra(letra)">
+                    {{letra}}
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <p>{{juego | json}}</p>
+</div>
