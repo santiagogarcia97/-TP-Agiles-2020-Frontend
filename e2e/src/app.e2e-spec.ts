@@ -1,5 +1,5 @@
 import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import { browser, logging, by, element, $$, $ } from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -10,7 +10,15 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('ahorcado app is running!');
+    expect(page.getTitleText()).toEqual('Ahorcado');
+  });
+
+  it('input should work', () => {
+    page.navigateTo();
+    $$('input').sendKeys('Bruno');
+    page.clickBtn();
+    page.getPalabraText()
+      .then(text => expect(text[0]).toContain('*'));
   });
 
   afterEach(async () => {

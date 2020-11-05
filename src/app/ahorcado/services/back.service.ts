@@ -31,13 +31,13 @@ export class BackService {
 
 
   iniciar(nombre: string): Observable<Response> {
-    const url = `/iniciar`;
+    const url = `https://agiles-backend-2020.herokuapp.com/iniciar`;
     const data = { nombre };
     return this.http.post<Response>(url, data, this.options);
   }
 
   enviarLetra(letra: string): Observable<Response> {
-    const url = `/enviar-letra`;
+    const url = `https://agiles-backend-2020.herokuapp.com/enviar-letra`;
     const data = { letra };
     return this.http.post<Response>(url, data, this.options);
   }

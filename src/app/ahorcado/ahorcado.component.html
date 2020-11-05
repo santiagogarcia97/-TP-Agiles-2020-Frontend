@@ -1,13 +1,13 @@
 <div style="text-align: center;">
-    <h1>Ahorcado</h1>
+    <h1 id="title">Ahorcado</h1>
 
     <div *ngIf="!juego">
-        <input type="text" [(ngModel)]="nombre"/>
-        <button (click)="iniciarPartida()">Iniciar partida</button>
+        <input class="text" [(ngModel)]="nombre"/>
+        <button class="btn" id="btn" (click)="iniciarPartida()">Iniciar partida</button>
     </div>
 
     <div *ngIf="juego">
-        <h3>{{juego.palabra}}</h3>
+        <div class="palabra">{{juego.palabra}}</div>
 
         <div>
             <div *ngFor="let row of letras">

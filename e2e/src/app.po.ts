@@ -1,4 +1,4 @@
-import { browser, by, element } from 'protractor';
+import { $, $$, browser, by, element } from 'protractor';
 
 export class AppPage {
   navigateTo(): Promise<unknown> {
@@ -6,6 +6,18 @@ export class AppPage {
   }
 
   getTitleText(): Promise<string> {
-    return element(by.css('app-root .content span')).getText() as Promise<string>;
+    return element(by.id('title')).getText() as Promise<string>;
+  }
+
+  getBtnText(): Promise<string> {
+    return element(by.id('btn')).getText() as Promise<string>;
+  }
+
+  clickBtn(): Promise<unknown> {
+    return element(by.id('btn')).click() as Promise<unknown>;
+  }
+
+  getPalabraText(): Promise<string> {
+    return $$('.palabra').getText() as Promise<string>;
   }
 }
