@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+  - "10.19.0"
+sudo: true
+
+addons:
+  chrome: stable
+
+branches:
+  only:
+    - master
+
+before_script:
+  - npm install -g @angular/cli
+
+script:
+  - ng e2e --protractor-config='e2e/ci.protractor.conf.js'
+  - ng build --prod
+
+deploy:
+  provider: heroku
+  skip_cleanup: true
+  app: agiles-front-2020
+  api_key:
+    secure: "53ea46fd-84fd-42ef-b949-9c0e9e67b44f"
