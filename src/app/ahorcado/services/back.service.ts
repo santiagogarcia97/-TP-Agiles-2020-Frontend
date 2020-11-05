@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+
 
 export interface Response {
   palabra: string;
@@ -17,6 +19,7 @@ export class BackService {
 
   headers = new HttpHeaders();
   options = {};
+  apiUrl = '';
 
   constructor( private http: HttpClient ) {
 
@@ -26,18 +29,18 @@ export class BackService {
     .append('X-Requested-With', 'XMLHttpRequest');
 
     this.options = { headers: this.headers, withCredentials: true};
-
+    this.apiUrl = environment.apiUrl;
   }
 
 
   iniciar(nombre: string): Observable<Response> {
-    const url = `https://agiles-backend-2020.herokuapp.com/iniciar`;
+    const url = `${this.apiUrl}/iniciar`;
     const data = { nombre };
     return this.http.post<Response>(url, data, this.options);
   }
 
   enviarLetra(letra: string): Observable<Response> {
-    const url = `https://agiles-backend-2020.herokuapp.com/enviar-letra`;
+    const url = `${this.apiUrl}/enviar-letra`;
     const data = { letra };
     return this.http.post<Response>(url, data, this.options);
   }
