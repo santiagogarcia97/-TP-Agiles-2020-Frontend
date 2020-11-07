@@ -1,24 +1,23 @@
 import { AppPage } from './app.po';
 import { browser, logging, by, element, $$, $ } from 'protractor';
 
-describe('workspace-project App', () => {
+describe('Ahorcado acceptance tests suite', () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('debe mostrar Ahorcado en el titulo', () => {
     page.navigateTo();
     expect(page.getTitleText()).toEqual('Ahorcado');
   });
 
-  it('input should work', () => {
+  it('debe poder iniciarse la partida', () => {
     page.navigateTo();
-    $$('input').sendKeys('Bruno');
-    page.clickBtn();
-    page.getPalabraText()
-      .then(text => expect(text[0]).toContain('*'));
+    page.fillNameInput('Bruno');
+    page.clickBtnIniciar();
+    expect(page.getPalabraText()).toContain('*');
   });
 
   afterEach(async () => {

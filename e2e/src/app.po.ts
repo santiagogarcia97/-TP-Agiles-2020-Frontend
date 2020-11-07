@@ -6,18 +6,18 @@ export class AppPage {
   }
 
   getTitleText(): Promise<string> {
-    return element(by.id('title')).getText() as Promise<string>;
+    return element(by.css('.title')).getText() as Promise<string>;
   }
 
-  getBtnText(): Promise<string> {
-    return element(by.id('btn')).getText() as Promise<string>;
+  fillNameInput(nombre: string): Promise<unknown> {
+    return element(by.css('.name-input')).sendKeys(nombre) as Promise<unknown>;
   }
 
-  clickBtn(): Promise<unknown> {
-    return element(by.id('btn')).click() as Promise<unknown>;
+  clickBtnIniciar(): Promise<unknown> {
+    return element(by.css('.btn-iniciar')).click() as Promise<unknown>;
   }
 
   getPalabraText(): Promise<string> {
-    return $$('.palabra').getText() as Promise<string>;
+    return element(by.css('.palabra')).getText() as Promise<string>;
   }
 }

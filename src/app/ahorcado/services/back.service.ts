@@ -34,13 +34,13 @@ export class BackService {
 
 
   iniciar(nombre: string): Observable<Response> {
-    const url = `${this.apiUrl}/iniciar`;
+    const url = `${this.apiUrl}iniciar`;
     const data = { nombre };
     return this.http.post<Response>(url, data, this.options);
   }
 
   enviarLetra(letra: string): Observable<Response> {
-    const url = `${this.apiUrl}/enviar-letra`;
+    const url = `${this.apiUrl}enviar-letra`;
     const data = { letra };
     return this.http.post<Response>(url, data, this.options);
   }

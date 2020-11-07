@@ -1,22 +1,18 @@
 language: node_js
 node_js:
-  - "10"
-
+- '10'
 addons:
   chrome: stable
-
 branches:
   only:
-    - master
-
+  - master
 before_script:
-  - npm install -g @angular/cli
-
+- npm install -g @angular/cli
 script:
-  - ng e2e --protractor-config='e2e/ci.protractor.conf.js'
-  - ng build --prod
-
+- ng e2e --protractor-config='e2e/ci.protractor.conf.js'
+- ng build --prod
 deploy:
   provider: heroku
   app: agiles-front-2020
-  api_key: "53ea46fd-84fd-42ef-b949-9c0e9e67b44f"
+  api_key:
+    secure: ZMxT7inbwQbaOQMTfa/rrEqXvjeL+2Srzd3shvBvOvFD9mPrgroolphQB2vxHKkMfjyZsqAPlVbiJxabIHqsbt+x4zRx6/NQrx8JY5pT9LGAEQgjfhjePbpoSYlJruQ4XLiWkzSwJS4i82BfPEeR14jRaOXfFSq+BZoQUmBgrG4dhzuasfFUtrCRu+GSW5LyWkyRV4A4OIBQXN9+/aF85KUGYH+eMCz/HfIlvYjGtuocxC/FNXr2yyoSMA+bC4B4GpPlqYs22yhErR+6sl5Gu7UBGszAbsbFt6Q3GN5VdLmEoDlQCCr4LuIkWvuvSlIpqaAcE8IcIx0A8SyZUYEJjUm8o/nfQxSPv9YtBc/jqUTHLHxdJRPQ3UbUM/2wIBNrn7sHqq2utc8Fu/Tevz7zq34vDHbSNyYFMtQkwdMkDLJBL0bu53m8sqlKEie4sR5GJzJMMK6/JZRS34isjCRAnrScNIHGLsiA0cRfZUzaKx1ctHjXSksfSEMm8UkTTHordiy1/0LoDRVjWkIrWR4kD7pbajL7GvRW2fj6hOhKi+b/HpeWplQu9NktwtAHsT+rKisHWhJ+17VYMdflV4Ia8kM7gBwJPQeJgdDo5tyPiQR5UBZzKqoW3T32oZGkJZvegVPacrQxyXWS91phHM8c+H0Kv3FHgdlBBXWYLZHgZ+w=
