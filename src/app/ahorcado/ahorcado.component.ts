@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { BackService, Response } from 'src/app/ahorcado/services/back.service';
 
+interface Tecla {
+  letra: string;
+  disabled: boolean;
+}
+
 @Component({
   selector: 'app-ahorcado',
   templateUrl: './ahorcado.component.html',
@@ -10,8 +15,11 @@ export class AhorcadoComponent implements OnInit {
 
   juego: Response;
   nombre: string;
+  loading: boolean;
 
-  letras = [
+  teclado: Tecla[][];
+
+  letrasQwerty = [
     ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', ],
     ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Ñ', ],
     ['Z', 'X', 'C', 'V', 'B', 'N', 'M', ],
@@ -20,17 +28,33 @@ export class AhorcadoComponent implements OnInit {
   constructor( private backService: BackService) { }
 
   ngOnInit(): void {
+    this.backService.backendTest()
+      .subscribe(res => console.log('Mensaje backend: ' + res.message));
+
+    this.teclado = [];
+    this.letrasQwerty.forEach( row => {
+      this.teclado.push(row.map(letra => ({letra, disabled: false}) ));
+    });
 
   }
 
   iniciarPartida(): void {
+    this.loading = true;
+
     this.backService.iniciar(this.nombre)
-      .subscribe(res => {console.log(res); this.juego = res; });
+      .subscribe( res => {
+        this.juego = res;
+        this.loading = false;
+    });
   }
 
-  enviarLetra(letra): void {
-    this.backService.enviarLetra(letra)
-      .subscribe(res => this.juego = res);
+  enviarLetra(tecla: Tecla): void {
+    tecla.disabled = true;
+    this.backService.enviarLetra(tecla.letra)
+      .subscribe(res => {
+        this.juego = res;
+        if (!this.juego.letrasArriesgadas.includes(tecla.letra)) { tecla.disabled = false; }
+      });
   }
 
 }

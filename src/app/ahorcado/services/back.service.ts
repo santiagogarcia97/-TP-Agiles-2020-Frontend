@@ -32,6 +32,10 @@ export class BackService {
     this.apiUrl = environment.apiUrl;
   }
 
+  backendTest(): Observable<{message: string}> {
+    const url = `${this.apiUrl}`;
+    return this.http.get<{message: string}>(url);
+  }
 
   iniciar(nombre: string): Observable<Response> {
     const url = `${this.apiUrl}iniciar`;

@@ -1,24 +1,40 @@
-<div class="container">
+<div class="main-page">
+
     <h1 class="title">Ahorcado</h1>
 
+    <!-- INICIAR PARTIDA -->
     <div class='input-container' *ngIf="!juego">
-        <input class="name-input" placeholder="Nombre" [(ngModel)]="nombre"/>
-        <button class="btn-iniciar" (click)="iniciarPartida()">Iniciar partida</button>
+        <input class="name-input" placeholder="Nombre" [(ngModel)]="nombre" [disabled]="loading" />
+        <button class="btn-iniciar" (click)="iniciarPartida()" [disabled]="loading">Iniciar partida</button>
     </div>
 
+    <!-- JUEGO -->
     <div *ngIf="juego">
-        <div class="palabra">{{juego.palabra}}</div>
 
+        <div class="img-container">
+            <img [src]="'/assets/img/' + juego.cantActualVidas + '.png'">
+            <div class="palabra">{{juego.palabra}}</div>
+        </div>
 
         <div>
-            <div *ngFor="let row of letras">
-                <button *ngFor="let letra of row" (click)="enviarLetra(letra)">
-                    {{letra}}
+            <div *ngFor="let row of teclado">
+                <button *ngFor="let tecla of row" 
+                        (click)="enviarLetra(tecla)" 
+                        [disabled]="tecla.disabled"
+                        class="btn-tecla">
+                    {{tecla.letra}}
                 </button>
             </div>
         </div>
 
     </div>
 
+    <!-- SPINNER -->
+    <div class="lds-ring" *ngIf="loading">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
     <p>{{juego | json}}</p>
 </div>
