@@ -1,5 +1,5 @@
 import { AppPage } from './app.po';
-import { browser, logging, by, element, $$, $ } from 'protractor';
+import { browser, logging } from 'protractor';
 
 describe('Ahorcado acceptance tests suite', () => {
   let page: AppPage;

@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const { createProxyMiddleware } = require('http-proxy-middleware');
+app.disable("x-powered-by");
 
 const API_SERVICE_URL = 'https://agiles-backend-2020.herokuapp.com';
 
