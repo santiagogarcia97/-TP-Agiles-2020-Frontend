@@ -15,6 +15,7 @@ export class AhorcadoComponent implements OnInit {
 
   juego: Response;
   nombre: string;
+  dificultad = '';
   loading: boolean;
 
   teclado: Tecla[][];
@@ -41,7 +42,7 @@ export class AhorcadoComponent implements OnInit {
   iniciarPartida(): void {
     this.loading = true;
 
-    this.backService.iniciar(this.nombre)
+    this.backService.iniciar(this.nombre, this.dificultad)
       .subscribe( res => {
         this.juego = res;
         this.loading = false;

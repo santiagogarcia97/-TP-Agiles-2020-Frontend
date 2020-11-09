@@ -5,7 +5,18 @@
     <!-- INICIAR PARTIDA -->
     <div class='input-container' *ngIf="!juego">
         <input class="name-input" placeholder="Nombre" [(ngModel)]="nombre" [disabled]="loading" />
-        <button class="btn-iniciar" (click)="iniciarPartida()" [disabled]="loading">Iniciar partida</button>
+
+        <select class="difficulty-input" [(ngModel)]="dificultad" [disabled]="loading">
+            <option value="" disabled selected>Dificultad</option>
+            <option value="FACIL">Facil</option>
+            <option value="MEDIA">Media</option>
+            <option value="DIFICIL">Difícil</option>
+        </select>
+
+        <button class="btn-iniciar" 
+                [class.btn-disabled]="!nombre || !dificultad" 
+                (click)="iniciarPartida()" 
+                [disabled]="loading || !nombre || !dificultad"> Iniciar partida </button>
     </div>
 
     <!-- JUEGO -->

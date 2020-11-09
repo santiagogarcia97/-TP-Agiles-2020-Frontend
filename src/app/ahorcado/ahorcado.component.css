@@ -26,9 +26,22 @@
     border: 1px solid rgb(107, 107, 107);
     outline: none;
 }
+.difficulty-input {
+    width: 250px;
+    margin-top: 16px;
+    border-radius: 3px;
+    padding: 8px 4px;
+    font-size: 16px;
+    text-align: center;
+    text-align-last:center;
+    box-sizing: border-box;
+    border: 1px solid rgb(107, 107, 107);
+    outline: none;
+    background-color: white;
+}
 .btn-iniciar {
     width: 250px;
-    margin-top: 8px;
+    margin-top: 16px;
     padding: 8px 32px;
     font-size: 20px;
     color: white;
@@ -38,6 +51,9 @@
     text-decoration: none;
     background-color: rgb(0, 48, 138);
     outline: none;
+}
+.btn-disabled {
+    background-color: rgb(62, 70, 85) !important;
 }
 
 

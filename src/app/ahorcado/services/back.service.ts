@@ -37,9 +37,9 @@ export class BackService {
     return this.http.get<{message: string}>(url);
   }
 
-  iniciar(nombre: string): Observable<Response> {
+  iniciar(nombre: string, dificultad = 'MEDIA'): Observable<Response> {
     const url = `${this.apiUrl}iniciar`;
-    const data = { nombre };
+    const data = { nombre, dificultad };
     return this.http.post<Response>(url, data, this.options);
   }
 
