@@ -49,5 +49,11 @@ export class BackService {
     return this.http.post<Response>(url, data, this.options);
   }
 
+  verRanking(): Observable<{}> {
+    const url = `${this.apiUrl}ver-ranking`;
+    return this.http.post<Response>(url, this.options);
+  }
+
+
 
 }

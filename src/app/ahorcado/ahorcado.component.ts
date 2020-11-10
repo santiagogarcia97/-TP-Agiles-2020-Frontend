@@ -13,6 +13,7 @@ interface Tecla {
 })
 export class AhorcadoComponent implements OnInit {
 
+  ranking = [];
   juego: Response;
   nombre: string;
   dificultad = '';
@@ -57,5 +58,14 @@ export class AhorcadoComponent implements OnInit {
         if (!this.juego.letrasArriesgadas.includes(tecla.letra)) { tecla.disabled = false; }
       });
   }
+
+  verRanking(): void {
+    this.backService.verRanking()
+      .subscribe(res => {
+        console.log(res)
+      });
+  }
+
+
 
 }
