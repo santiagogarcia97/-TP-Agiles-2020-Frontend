@@ -129,16 +129,3 @@
     transform: rotate(360deg);
 }
 }
-
-
-/* TABLE */
-.table{
-    margin-left: 10%;
-    width: 80%;
-    position: relative;
-    margin-top: 5%;
-}
-
-tr{
-    background-color: white;
-}
