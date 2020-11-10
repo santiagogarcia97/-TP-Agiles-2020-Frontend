@@ -131,4 +131,14 @@
 }
 
 
+/* TABLE */
+.table{
+    margin-left: 25%;
+    margin-right: 25%;
+    position: relative;
+    margin-top: 5%;
+}
 
+col{
+    background-color: white;
+}
