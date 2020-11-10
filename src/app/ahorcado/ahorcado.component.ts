@@ -13,11 +13,15 @@ interface Tecla {
 })
 export class AhorcadoComponent implements OnInit {
 
+  showModal = false;
+  showRanking = false;
+  loading = false;
+  esperandoRespuesta = false;
+
   ranking = [];
   juego: Response;
   nombre: string;
   dificultad = '';
-  loading: boolean;
 
   teclado: Tecla[][];
 
@@ -33,11 +37,14 @@ export class AhorcadoComponent implements OnInit {
     this.backService.backendTest()
       .subscribe(res => console.log('Mensaje backend: ' + res.message));
 
+    this.crearTeclado();
+  }
+
+  crearTeclado(): void {
     this.teclado = [];
     this.letrasQwerty.forEach( row => {
       this.teclado.push(row.map(letra => ({letra, disabled: false}) ));
     });
-
   }
 
   iniciarPartida(): void {
@@ -51,21 +58,52 @@ export class AhorcadoComponent implements OnInit {
   }
 
   enviarLetra(tecla: Tecla): void {
+    if (this.juego.estadoPartida !== 'CURSO' || this.esperandoRespuesta) { return; }
+    this.esperandoRespuesta = true;
     tecla.disabled = true;
     this.backService.enviarLetra(tecla.letra)
       .subscribe(res => {
+        console.log(res);
+
         this.juego = res;
         if (!this.juego.letrasArriesgadas.includes(tecla.letra)) { tecla.disabled = false; }
+
+        if (this.juego.estadoPartida !== 'CURSO') {
+          this.finPartida();
+        }
+        this.esperandoRespuesta = false;
       });
   }
 
   verRanking(): void {
+    this.ranking = [];
+    this.loading = true;
+    this.showRanking = true;
+    this.showModal = false;
+
     this.backService.verRanking()
       .subscribe(res => {
-        console.log(res)
+        Object.keys(res).forEach(e =>
+          this.ranking.push({nombre: res[e].nombre, puntaje: res[e].puntaje})
+        );
+        this.loading = false;
       });
   }
 
+  back(): void {
+    this.showRanking = false;
+  }
 
+  finPartida(): void {
+    this.showModal = true;
+  }
+
+  reiniciar(): void {
+    this.juego = null;
+    this.nombre = null;
+    this.dificultad = '';
+    this.showModal = false;
+    this.crearTeclado();
+  }
 
 }

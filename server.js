@@ -16,4 +16,7 @@ app.get('/', (req, res) => {
 app.use('/api', createProxyMiddleware({ target: API_SERVICE_URL, changeOrigin: true, logLevel: 'debug' }));
 
 /* SERVER START */
-app.listen(process.env.PORT || 5000);
+const puerto = process.env.PORT || 5000;
+app.listen(puerto, () => {
+  console.log(`Proxy corriendo en puerto: ${puerto}`)
+})

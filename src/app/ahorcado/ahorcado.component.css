@@ -5,6 +5,17 @@
     overflow: hidden;
     background-color: #efefef;
 }
+.btn {
+    margin: 8px;
+    padding: 8px 32px;
+    font-size: 20px;
+    color: white;
+    font-weight: 500;
+    border-radius: 3px;
+    border: none;
+    text-decoration: none;
+    outline: none;
+}
 
 /* INICIAR PARTIDA */
 .title {
@@ -19,6 +30,7 @@
 .name-input {
     width: 250px;
     border-radius: 3px;
+    margin: 8px;
     padding: 8px 4px;
     font-size: 16px;
     text-align: center;
@@ -28,7 +40,7 @@
 }
 .difficulty-input {
     width: 250px;
-    margin-top: 16px;
+    margin: 8px;
     border-radius: 3px;
     padding: 8px 4px;
     font-size: 16px;
@@ -41,21 +53,20 @@
 }
 .btn-iniciar {
     width: 250px;
-    margin-top: 16px;
-    padding: 8px 32px;
-    font-size: 20px;
-    color: white;
-    font-weight: 500;
-    border-radius: 3px;
-    border: none;
-    text-decoration: none;
     background-color: rgb(0, 48, 138);
-    outline: none;
+}
+.btn-ranking {
+    width: 250px;
+    background-color: rgb(0, 133, 138);
 }
 .btn-disabled {
     background-color: rgb(62, 70, 85) !important;
 }
-
+.divisor {
+    width: 250px;
+    margin: 8px;
+    border: 1px solid gray;
+}
 
 /* JUEGO */
 .img-container {
@@ -72,18 +83,86 @@
     padding: 32px;
 }
 .btn-tecla {
+    border-radius: 10px !important;
+    background-color: deepskyblue;
+    height: 30px;
+    width: 30px;
+    font-weight: 900;
+    margin: 4px !important;
+    border: 2px solid black;
+    padding: 0;
+    font-size: 16px;
+    color: black;
+}
+.arriesgadas-container {
+    margin-top: 32px;
+}
+.arriesgadas {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.arriesgadas > div {
     border-radius: 10px;
     background-color: deepskyblue;
-    text-align: center;
     box-sizing: border-box;
     height: 30px;
     width: 30px;
     font-weight: 900;
     margin: 4px;
     border: 2px solid black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.facil {
+    color: green;
+}
+.media {
+    color: orange;
+}
+.dificil {
+    color: red;
+}
+
+
+
+/* RANKING */
+.ranking-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+}
+.btn-volver {
+    margin: 32px;
+    padding: 8px 32px;
+    font-size: 20px;
+    color: white;
+    font-weight: 500;
+    border-radius: 3px;
+    border: none;
     text-decoration: none;
+    background-color: rgb(0, 133, 138);
     outline: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* SPINNER */
@@ -122,4 +201,47 @@
 100% {
     transform: rotate(360deg);
 }
+}
+
+
+
+
+
+
+
+
+/* MODAL */
+.modal {
+    display: block; 
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 250px;
+}
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.btn-rank {
+    padding: 8px 8px;
+    font-size: 16px !important;
+    background-color: rgb(0, 133, 138);
+}
+.btn-rein {
+    padding: 8px 8px;
+    font-size: 16px !important;
+    background-color: rgb(0, 133, 138);
 }

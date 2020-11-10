@@ -10,6 +10,8 @@ export interface Response {
   estadoPartida: string;
   letrasArriesgadas: string[];
   nombreJugador: string;
+  dificultad: string;
+  puntaje: number;
 }
 
 @Injectable({
