@@ -47,5 +47,25 @@
         <div></div>
         <div></div>
     </div>
-    <p>{{juego | json}}</p>
+
+    <!-- TABLE -->
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Vidas</th>
+            <th scope="col">Dificultad</th>
+            <th scope="col">Letras Arriesgadas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th></th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+        </tbody>
+    </table>
+    <p>{{juego["cantActualVidas"] | json}}</p>
 </div>
