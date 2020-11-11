@@ -21,9 +21,9 @@ export class AppPage {
     return element(by.css('.palabra')).getText() as Promise<string>;
   }
 
-  selectDropdownByNumber(elementCss, index): void {
-    element(by.css(elementCss)).element(by.tagName('option'))
-      .then(options => options[index].click());
-    browser.sleep(500);
+  selectDifficulty(diff: string): Promise<unknown> {
+    const select = element(by.css('.difficulty-input'));
+    return select.$(`[value="${diff}"]`).click() as Promise<unknown>;
   }
+
 }
