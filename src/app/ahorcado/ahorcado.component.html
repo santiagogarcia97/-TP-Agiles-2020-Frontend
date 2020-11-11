@@ -51,6 +51,7 @@
                     <button *ngFor="let tecla of row" 
                             (click)="enviarLetra(tecla)" 
                             [disabled]="tecla.disabled"
+                            [class.btn-disabled]="tecla.disabled"
                             class="btn btn-tecla">
                         {{tecla.letra}}
                     </button>
@@ -72,13 +73,14 @@
     <div class="ranking-container" *ngIf="showRanking && ranking && ranking.length">  
 
         <table>
+            <caption>Tabla que muestra el Ranking</caption>
             <tr>
-                <th>Nombre</th>
-                <th>Puntaje</th>
+                <th id="nombreTh">Nombre</th>
+                <th id="puntajeTh">Puntaje</th>
             </tr>
             <tr *ngFor="let row of ranking">
-                <th>{{row.nombre}}</th>
-                <th>{{row.puntaje}}</th>
+                <td>{{row.nombre}}</th>
+                <td>{{row.puntaje}}</th>
             </tr>
         </table>
          
