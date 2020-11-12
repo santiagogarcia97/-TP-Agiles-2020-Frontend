@@ -44,4 +44,8 @@ export class AppPage {
       .then(text => text === letra);
     }).first().click() as Promise<unknown>;
   }
+
+  getImagen(): Promise<string> {
+    return element(by.css('.imagen')).getAttribute('src') as Promise<string>;
+  }
 }

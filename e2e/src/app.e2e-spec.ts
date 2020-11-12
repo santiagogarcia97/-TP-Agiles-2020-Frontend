@@ -35,6 +35,14 @@ describe('Ahorcado acceptance tests suite', () => {
     expect(page.getPartidaStats()).toContain('DIFICIL');
   });
 
+  it('debe mostrar el dibujo correctamente', () => {
+    page.navigateTo();
+    page.fillNameInput('Bruno');
+    page.selectDifficulty('MEDIA');
+    page.clickBtnIniciar();
+    expect(page.getImagen()).toContain('7');
+  });
+
 /*
   it('debe arriesgar la letra correcta ', () => {
     page.navigateTo();
