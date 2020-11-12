@@ -59,8 +59,10 @@ export class AhorcadoComponent implements OnInit {
 
   enviarLetra(tecla: Tecla): void {
     if (this.juego.estadoPartida !== 'CURSO' || this.esperandoRespuesta) { return; }
+
     this.esperandoRespuesta = true;
     tecla.disabled = true;
+
     this.backService.enviarLetra(tecla.letra)
       .subscribe(res => {
         console.log(res);
@@ -90,7 +92,8 @@ export class AhorcadoComponent implements OnInit {
       });
   }
 
-  back(): void {
+  volver(): void {
+    this.reiniciar();
     this.showRanking = false;
   }
 

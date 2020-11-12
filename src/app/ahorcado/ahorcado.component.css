@@ -17,9 +17,11 @@
     outline: none;
 }
 
+
 /* INICIAR PARTIDA */
 .title {
     padding: 16px 0px;
+    margin-bottom: 0;
 }
 .input-container {
     display: flex;
@@ -59,14 +61,13 @@
     width: 250px;
     background-color: rgb(0, 133, 138);
 }
-.btn-disabled {
-    background-color: rgb(62, 70, 85) !important;
-}
 .divisor {
     width: 250px;
     margin: 8px;
     border: 1px solid gray;
+    box-sizing: border-box;
 }
+
 
 /* JUEGO */
 .img-container {
@@ -82,30 +83,27 @@
     letter-spacing: 10px;
     padding: 32px;
 }
-
 .btn-tecla {
-    border-radius: 10px !important;
+    border-radius: 10px;
     background-color: deepskyblue;
     height: 30px;
     width: 30px;
     font-weight: 900;
-    margin: 4px !important;
+    margin: 4px;
     border: 2px solid black;
     padding: 0;
     font-size: 16px;
     color: black;
     cursor: pointer;
+    box-sizing: border-box;
 }
-
 .btn-disabled{
-    background-color: rgb(190, 193, 194) !important;
+    background-color: rgb(190, 193, 194);
     cursor: default;
 }
-
 .btn-tecla:hover{
     background-color: rgb(248, 248, 248);
 }
-
 .arriesgadas-container {
     margin-top: 32px;
 }
@@ -124,7 +122,6 @@
     font-weight: 900;
     margin: 4px;
     border: 2px solid black;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -138,7 +135,9 @@
 .dificil {
     color: red;
 }
-
+.partida-stats > div {
+    margin: 4px 0;
+}
 
 
 /* RANKING */
@@ -147,7 +146,6 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-
 }
 .btn-volver {
     margin: 32px;
@@ -161,20 +159,17 @@
     background-color: rgb(0, 133, 138);
     outline: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.ranking-table {
+    table-layout: fixed;
+    width: 300px;
+    border-collapse: collapse;
+}
+th, td {
+    width: 150px;
+    overflow: hidden;
+    padding: 8px 0px;
+    border-bottom: 1px solid #cecece;
+}
 
 
 /* SPINNER */
@@ -207,24 +202,18 @@
     animation-delay: -0.15s;
 }
 @keyframes lds-ring {
-0% {
-    transform: rotate(0deg);
+    0% {
+        transform: rotate(0deg);
+   }
+    100% {
+        transform: rotate(360deg);
+   }
 }
-100% {
-    transform: rotate(360deg);
-}
-}
-
-
-
-
-
-
 
 
 /* MODAL */
 .modal {
-    display: block; 
+    display: block;
     position: fixed;
     z-index: 100;
     left: 0;
@@ -237,10 +226,12 @@
 }
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; 
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 250px;
+    width: 280px;
+    text-align: center;
+    border-radius: 3px;
 }
 .buttons-container {
     display: flex;
@@ -248,12 +239,14 @@
     justify-content: space-between;
 }
 .btn-rank {
-    padding: 8px 8px;
-    font-size: 16px !important;
+    padding: 8px;
+    font-size: 16px;
+    width: 110px;
     background-color: rgb(0, 133, 138);
 }
 .btn-rein {
-    padding: 8px 8px;
-    font-size: 16px !important;
+    padding: 8px;
+    font-size: 16px;
+    width: 110px;
     background-color: rgb(0, 133, 138);
 }

@@ -25,10 +25,10 @@ export class BackService {
 
   constructor( private http: HttpClient ) {
 
-    this.headers.set('Accept', 'application/json')
-    .append('Access-Control-Allow-Origin', '*')
-    .append('Content-type', 'application/x-www-form-urlencoded')
-    .append('X-Requested-With', 'XMLHttpRequest');
+    this.headers.set('Accept', 'application/json');
+    this.headers.set('Access-Control-Allow-Origin', '*');
+    this.headers.set('Content-type', 'application/x-www-form-urlencoded');
+    this.headers.set('X-Requested-With', 'XMLHttpRequest');
 
     this.options = { headers: this.headers, withCredentials: true};
     this.apiUrl = environment.apiUrl;

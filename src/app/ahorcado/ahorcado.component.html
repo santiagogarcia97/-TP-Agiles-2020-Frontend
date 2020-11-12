@@ -37,7 +37,7 @@
                     >
                     Dificultad: {{juego.dificultad}}
                 </div>
-                <div>Vidas restantes: {{juego.cantActualVidas}}</div>
+                <div>Vidas restantes: <strong>{{juego.cantActualVidas}}</strong></div>
 
             </div>
 
@@ -72,8 +72,8 @@
     <!-- RANKING -->
     <div class="ranking-container" *ngIf="showRanking && ranking && ranking.length">  
 
-        <table>
-            <caption>Tabla que muestra el Ranking</caption>
+        <table class="ranking-table">
+            <caption>Ranking</caption>
             <tr>
                 <th id="nombreTh">Nombre</th>
                 <th id="puntajeTh">Puntaje</th>
@@ -84,7 +84,7 @@
             </tr>
         </table>
          
-        <button class="btn btn-volver" (click)="back()">Volver</button>
+        <button class="btn btn-volver" (click)="volver()">Volver</button>
     </div>
 
 
@@ -106,8 +106,13 @@
 
     <!-- Modal content -->
     <div class="modal-content" *ngIf="juego">
-        <p>{{juego.estadoPartida}}</p>
-        <p *ngIf="juego.puntaje">{{juego.puntaje}}</p>
+
+        <p *ngIf="juego.estadoPartida === 'GANADA'">!Ganaste la partida¡</p>
+        <p *ngIf="juego.estadoPartida === 'PERDIDA'">Perdiste</p>
+
+        <p style="margin: 16px 0;">La palabra era {{juego.palabra}}</p>
+
+        <p style="margin: 16px 0;" *ngIf="juego.estadoPartida === 'GANADA'">Tu puntaje fue {{juego.puntaje}}</p>
 
         <div class="buttons-container">
             <button class="btn btn-rein" (click)="reiniciar()">Reiniciar</button>

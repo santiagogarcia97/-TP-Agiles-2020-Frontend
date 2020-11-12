@@ -26,4 +26,22 @@ export class AppPage {
     return select.$(`[value="${diff}"]`).click() as Promise<unknown>;
   }
 
+  clickBtnVerRanking(): Promise<unknown> {
+    return element(by.css('.btn-ranking')).click() as Promise<unknown>;
+  }
+
+  getRankingTable(): Promise<string> {
+    return element(by.css('.ranking-table')).getText() as Promise<string>;
+  }
+
+  getPartidaStats(): Promise<string> {
+    return element(by.css('.partida-stats')).getText() as Promise<string>;
+  }
+
+  clickBtnLetra(letra: string): Promise<unknown> {
+    return element.all(by.css('.btn-tecla')).filter((elem, index) => {
+      return elem.getText()
+      .then(text => text === letra);
+    }).first().click() as Promise<unknown>;
+  }
 }
