@@ -42,7 +42,7 @@ describe('Ahorcado acceptance tests suite', () => {
     page.clickBtnIniciar();
     expect(page.getImagen()).toContain('7');
   });
-
+  /*
   it('debe arriesgar la letra correcta ', () => {
     page.navigateTo();
     page.fillNameInput('Bruno');
@@ -63,7 +63,7 @@ describe('Ahorcado acceptance tests suite', () => {
     page.clickBtnArriesgar();
     expect(page.getPartidaStats()).toContain('6');
   });
-
+  */
 
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser

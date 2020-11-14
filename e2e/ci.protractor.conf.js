@@ -19,7 +19,7 @@ exports.config = {
         "browser.enabled_labs_experiments": [ "same-site-by-default-cookies@2", "cookies-without-same-site-must-be-secure@2" ]
       }
     },
-    'browserName': 'chrome'
+    browserName: 'chrome'
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
