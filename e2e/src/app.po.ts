@@ -48,4 +48,16 @@ export class AppPage {
   getImagen(): Promise<string> {
     return element(by.css('.imagen')).getAttribute('src') as Promise<string>;
   }
+
+  fillPalabraInput(palabra: string): Promise<unknown> {
+    return element(by.css('.input-arriesgar-palabra')).sendKeys(palabra) as Promise<unknown>;
+  }
+
+  clickBtnArriesgar(): Promise<unknown> {
+    return element(by.css('.btn-arriesgar')).click() as Promise<unknown>;
+  }
+
+  getLetrasArrriesgadas(): Promise<string> {
+    return element(by.css('.arriesgadas')).getText() as Promise<string>;
+  }
 }

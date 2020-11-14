@@ -51,6 +51,12 @@ export class BackService {
     return this.http.post<Response>(url, data, this.options);
   }
 
+  arriesgarPalabra(palabra: string): Observable<Response> {
+    const url = `${this.apiUrl}enviar-palabra`;
+    const data = { palabra };
+    return this.http.post<Response>(url, data, this.options);
+  }
+
   verRanking(): Observable<{}> {
     const url = `${this.apiUrl}ver-ranking`;
     return this.http.post<Response>(url, this.options);

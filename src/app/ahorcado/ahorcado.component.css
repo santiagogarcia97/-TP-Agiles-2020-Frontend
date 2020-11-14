@@ -83,6 +83,10 @@
     letter-spacing: 10px;
     padding: 32px;
 }
+.teclado-row {
+    display: flex;
+    justify-content: center;
+}
 .btn-tecla {
     border-radius: 10px;
     background-color: deepskyblue;
@@ -137,6 +141,34 @@
 }
 .partida-stats > div {
     margin: 4px 0;
+}
+
+.input-arriesgar-palabra {
+    width: 200px;
+    border-radius: 10px 0px 0px 10px;
+    padding: 8px 4px;
+    font-size: 16px;
+    text-align: center;
+    box-sizing: border-box;
+    border: 1px solid rgb(107, 107, 107);
+    border-right: none;
+    outline: none;
+    height: 36px;
+}
+.btn-arriesgar {
+    padding: 8px 4px;
+    font-size: 16px;
+    color: black;
+    background-color: lightseagreen;
+    font-weight: 500;
+    border-radius: 0px 10px 10px 0px;
+    border: 1px solid rgb(107, 107, 107);
+    border-left: none;
+    text-decoration: none;
+    outline: none;
+    height: 36px;
+    width: 36px;
+    cursor: pointer;
 }
 
 

@@ -30,7 +30,7 @@
         <div *ngIf="juego">
 
             <div class="partida-stats">
-                <div>Nombre: {{juego.nombreJugador}}</div>
+                <div>Nombre: <strong>{{juego.nombreJugador}}</strong></div>
                 <div [class.facil]="juego.dificultad === 'FACIL'"
                      [class.media]="juego.dificultad === 'MEDIA'"
                      [class.dificil]="juego.dificultad === 'DIFICIL'"
@@ -47,7 +47,7 @@
             </div>
 
             <div>
-                <div *ngFor="let row of teclado">
+                <div class="teclado-row" *ngFor="let row of teclado">
                     <button *ngFor="let tecla of row" 
                             (click)="enviarLetra(tecla)" 
                             [disabled]="tecla.disabled"
@@ -55,6 +55,10 @@
                             class="btn btn-tecla">
                         {{tecla.letra}}
                     </button>
+                </div>
+                <div style="margin: 16px 0px;">
+                    <input class="input-arriesgar-palabra" placeholder="Arriesgar palabra" [(ngModel)]="palabraArriesgar"/>
+                    <button class="btn-arriesgar" [disabled]="esperandoRespuesta" (click)="arriesgarPalabra()">></button>
                 </div>
             </div>
             
@@ -115,7 +119,7 @@
         <p style="margin: 16px 0;" *ngIf="juego.estadoPartida === 'GANADA'">Tu puntaje fue {{juego.puntaje}}</p>
 
         <div class="buttons-container">
-            <button class="btn btn-rein" (click)="reiniciar()">Reiniciar</button>
+            <button class="btn btn-rein" (click)="reiniciarJuego()">Reiniciar</button>
             <button class="btn btn-rank" (click)="verRanking()">Ver Ranking</button>
         </div>
     </div>

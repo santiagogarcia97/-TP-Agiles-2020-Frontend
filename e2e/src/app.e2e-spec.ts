@@ -43,19 +43,27 @@ describe('Ahorcado acceptance tests suite', () => {
     expect(page.getImagen()).toContain('7');
   });
 
-/*
   it('debe arriesgar la letra correcta ', () => {
     page.navigateTo();
     page.fillNameInput('Bruno');
     page.selectDifficulty('DIFICIL');
     page.clickBtnIniciar();
-    browser.sleep(5000);
-    browser.manage().getCookies().then(cookies => console.log(cookies));
+    browser.sleep(1000);
     page.clickBtnLetra('F');
-    browser.sleep(60000);
-    expect(page.getPartidaStats()).toContain('DIFICIL');
+    expect(page.getLetrasArrriesgadas()).toContain('F');
   });
-*/
+
+  it('debe arriesgar una palabra incorrecta y restar vida', () => {
+    page.navigateTo();
+    page.fillNameInput('Bruno');
+    page.selectDifficulty('DIFICIL');
+    page.clickBtnIniciar();
+    browser.sleep(1000);
+    page.fillPalabraInput('palabraTest');
+    page.clickBtnArriesgar();
+    expect(page.getPartidaStats()).toContain('6');
+  });
+
 
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser

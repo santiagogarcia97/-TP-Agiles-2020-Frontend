@@ -22,6 +22,7 @@ export class AhorcadoComponent implements OnInit {
   juego: Response;
   nombre: string;
   dificultad = '';
+  palabraArriesgar = '';
 
   teclado: Tecla[][];
 
@@ -65,14 +66,26 @@ export class AhorcadoComponent implements OnInit {
 
     this.backService.enviarLetra(tecla.letra)
       .subscribe(res => {
-        console.log(res);
 
         this.juego = res;
         if (!this.juego.letrasArriesgadas.includes(tecla.letra)) { tecla.disabled = false; }
+        if (this.juego.estadoPartida !== 'CURSO') { this.showModal = true; }
 
-        if (this.juego.estadoPartida !== 'CURSO') {
-          this.finPartida();
-        }
+        this.esperandoRespuesta = false;
+      });
+  }
+
+  arriesgarPalabra(): void {
+    if (this.juego.estadoPartida !== 'CURSO' || this.esperandoRespuesta) { return; }
+
+    this.esperandoRespuesta = true;
+
+    this.backService.arriesgarPalabra(this.palabraArriesgar)
+      .subscribe(res => {
+
+        this.juego = res;
+        if (this.juego.estadoPartida !== 'CURSO') { this.showModal = true; }
+
         this.esperandoRespuesta = false;
       });
   }
@@ -93,18 +106,15 @@ export class AhorcadoComponent implements OnInit {
   }
 
   volver(): void {
-    this.reiniciar();
+    this.reiniciarJuego();
     this.showRanking = false;
   }
 
-  finPartida(): void {
-    this.showModal = true;
-  }
-
-  reiniciar(): void {
+  reiniciarJuego(): void {
     this.juego = null;
     this.nombre = null;
     this.dificultad = '';
+    this.palabraArriesgar = '';
     this.showModal = false;
     this.crearTeclado();
   }
