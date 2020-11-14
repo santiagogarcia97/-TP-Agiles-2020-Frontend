@@ -14,7 +14,7 @@ exports.config = {
   ],
   capabilities: {
     chromeOptions: {
-      args: [ "--disable-web-security" ],
+      args: [ "--headless", "--disable-web-security" ],
       localState: {
         "browser.enabled_labs_experiments": [ "same-site-by-default-cookies@2", "cookies-without-same-site-must-be-secure@2" ]
       }
