@@ -1,16 +1,23 @@
+#Configura la máquina virtual del CI server.
 language: node_js
 node_js:
 - '10'
+#Instala Google Chrome para poder ejecutar los Acceptance Tests
 addons:
   chrome: stable
+#Utiliza la rama master del proyecto
 branches:
   only:
   - master
+#Antes de ejecutar cualquier script instala el cliente de Angular
 before_script:
 - npm install -g @angular/cli
 script:
+#Ejecuta los Acceptance Tests
 - ng e2e --protractor-config='e2e/ci.protractor.conf.js'
+#Compila una build en modo produccion
 - ng build --prod
+#Configura el Deploy hacia Heroku
 deploy:
   provider: heroku
   app: agiles-front-2020
